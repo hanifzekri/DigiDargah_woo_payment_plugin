@@ -1,15 +1,17 @@
 <?php
 
 /*
-* Plugin Name: DigiDargah payment gateway for Woocommerce
-* Author: DigiDargah
-* Description: <a href="https://digidargah.com">DigiDargah</a> secure payment gateway for Woocommerce.
-* Version: 2.2.3
+* Plugin Name: DigiDargah crypto payment gateway for Woocommerce
+* Description: <a href="https://digidargah.com">DigiDargah</a> crypto payment gateway for Woocommerce.
+* Version: 1.1
+* developer: Hanif Zekri Astaneh
+* Author: DigiDargah.com
 * Author URI: https://digidargah.com
 * Author Email: info@digidargah.com
-* Text Domain: woo-digidargah-gateway
-* WC requires at least: 3.0
+* Text Domain: DigiDargah_woo_payment_plugin
 * WC tested up to: 6.1
+* copyright (C) 2020 DigiDargah
+* license http://www.gnu.org/licenses/gpl-3.0.html GPLv3 or later
 */
 
 if (!defined('ABSPATH')) {
@@ -354,3 +356,4 @@ function wc_gateway_digidargah_init(){
 //Add a function when hook 'plugins_loaded' is fired.
 add_action('plugins_loaded', 'wc_gateway_digidargah_init');
 
+?>
