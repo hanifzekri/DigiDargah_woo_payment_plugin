@@ -2,13 +2,15 @@
 
 ## Table of Contents
 
-1. [Description](#description)
-2. [Installation](#installation)
-3. [Configuration](#configuration)
-4. [Usage](#usage)
-5. [Troubleshooting](#troubleshooting)
-6. [License](#license)
-7. [Contact](#contact)
+- [Description](#description)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
+- [Contact Information](#contact-information)
+- [Changelog](#changelog)
 
 ---
 
@@ -80,7 +82,7 @@ After submitting your website on DigiDargah.com and getting an API key, to insta
 
 ## Contributing
 
-If you want to contribute to this project or report issues, please visit the GitHub repository: [DigiDargah Crypto Payment Gateway for WHMCS](https://github.com/hanifzekri/DigiDargah_woo_payment_module).
+If you want to contribute to this project or report issues, please visit the GitHub repository: [DigiDargah Crypto Payment Gateway for WHMCS](https://github.com/hanifzekri/DigiDargah_whmcs_payment_module).
 
 ---
 
@@ -96,7 +98,7 @@ This plugin is licensed under the GNU General Public License v3.0 (GPL-3.0). You
 
 ---
 
-## Contact
+## Contact Information
 
 For inquiries, support, or assistance, please contact DigiDargah.com:
 - Website: [https://digidargah.com](https://digidargah.com)
