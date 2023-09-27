@@ -1,33 +1,115 @@
-DigiDargah.com crypto Payment Gateway Module for Woocommerce
-Contributors: Hanif Zekri Astaneh
-Tags: Woocommerce, payment, DigiDargah, gateway, Woocommerce plugin, payment plugin
-Stable tag: 1.1
-Tested up to: 8.1
-License: GNU GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# DigiDargah Crypto Payment Gateway for WooCommerce
 
-[DigiDargah.com](https://DigiDargah.com) payment method for [Woocommerce](https://wordpress.org/plugins/woocommerce/).
+## Table of Contents
 
-== Description ==
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Configuration](#configuration)
+4. [Usage](#usage)
+5. [Troubleshooting](#troubleshooting)
+6. [License](#license)
+7. [Contact](#contact)
 
-DigiDargah.com provides payment solutions based on cryptocurrencies, and this plugin enables DigiDargah's payment gateway for WHMCSWoocommerce.
+---
 
-== Installation ==
+## Description
 
-After creating a web service on DigiDargah.com and getting an API key, follow these instructions:
+The **DigiDargah Crypto Payment Gateway for WooCommerce** is a plugin that allows you to integrate the DigiDargah crypto payment gateway into your WooCommerce online store. DigiDargah enables your customers to make payments using various cryptocurrencies such as Bitcoin, Ethereum, Dogecoin, and more.
 
-In the WordPress admin panel, click on the Plugins option from the main menu. Then, from the opened submenu, select the new plugin option. On the page that opens, click the upload button next to the page title to display the plugin upload form.
+This plugin is developed by Hanif Zekri Astaneh and is provided by DigiDargah.com. It is compatible with WooCommerce version 6.1 and later.
 
-Select the file related to the plugin through the Browse button and click on the install button. After a few seconds, the plugin will be installed. Then click on the activation button to activate the plugin.
+**Features**:
+- Accept payments in multiple cryptocurrencies.
+- Seamless integration with your WooCommerce store.
+- Customizable success and failure messages.
+- Automatic order status updates.
 
-To configure, customize and manage the plugin, refer to WooCommerce from the main menu » Settings » Payment methods. 
+---
 
-Thank you so much for using the DigiDargah.com Payment Gateway.
+## Installation
 
-== Changelog ==
+After submitting your website on DigiDargah.com and getting an API key, to install the DigiDargah Crypto Payment Gateway for WooCommerce, follow these steps:
 
-= 1.1, feb 18, 2023 =
-* Bugs fixed
+1. **Download**: Download the plugin files.
 
-= 1.0, jan 15, 2023 =
-* First release.
+2. **Upload Plugin**:
+   - Log in to your WordPress admin dashboard.
+   - Navigate to "Plugins" > "Add New."
+   - Click the "Upload Plugin" button.
+   - Choose the downloaded ZIP file and click "Install Now."
+
+3. **Activate Plugin**:
+   - After installation, click the "Activate" button.
+
+---
+
+## Configuration
+
+1. **Enable the Gateway**:
+   - Go to "WooCommerce" > "Settings" > "Payments."
+   - Enable "DigiDargah" to activate the payment gateway.
+
+2. **Gateway Settings**:
+   - Configure the following settings:
+     - **Title**: The title displayed to customers during checkout.
+     - **Description**: Description displayed to customers.
+     - **API Key**: Enter your DigiDargah API key.
+     - **Pay Currency**: Specify the cryptocurrencies customers can use for payments.
+     - **Order Status**: Set the order status after successful payment.
+     - **Success Message**: Customize the success message displayed to customers.
+     - **Failed Message**: Customize the message for failed payments.
+
+3. **Save Changes**: Click "Save changes" to apply your settings.
+
+---
+
+## Usage
+
+1. **Checkout Process**:
+   - When customers proceed to checkout, they will see the "DigiDargah" payment option.
+   - After selecting it, they will be redirected to the DigiDargah payment page.
+
+2. **Payment Confirmation**:
+   - Once the payment is completed, the order status will be updated as per your configuration.
+   - Customers will see the customized success message.
+
+3. **Failed Payment**:
+   - In case of a failed payment, customers will see the customized failed message.
+
+---
+
+## Troubleshooting
+
+If you encounter any issues or have questions about the DigiDargah Crypto Payment Gateway for WooCommerce, please refer to the [official documentation](https://digidargah.com) or contact our support team at [info@digidargah.com](mailto:info@digidargah.com).
+
+---
+
+## License
+
+This plugin is licensed under the GNU General Public License v3.0 (GPL-3.0). You can review the full license text at [GPL-3.0 License](http://www.gnu.org/licenses/gpl-3.0.html).
+
+---
+
+## Contact
+
+For inquiries, support, or assistance, please contact DigiDargah.com:
+- Website: [https://digidargah.com](https://digidargah.com)
+- Email: [info@digidargah.com](mailto:info@digidargah.com)
+
+---
+
+## Changelog
+
+- 1.1, feb 18, 2023
+Bugs fixed
+
+- 1.0, jan 15, 2023
+First release.
+
+---
+
+Thank you for using the DigiDargah Crypto Payment Gateway for WooCommerce! We appreciate your business.
+
+---
+
+*Copyright (C) 2020 DigiDargah*
