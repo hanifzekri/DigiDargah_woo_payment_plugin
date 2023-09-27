@@ -18,13 +18,15 @@
 
 The **DigiDargah Crypto Payment Gateway for WooCommerce** is a plugin that allows you to integrate the DigiDargah crypto payment gateway into your WooCommerce online store. DigiDargah enables your customers to make payments using various cryptocurrencies such as Bitcoin, Ethereum, Dogecoin, and more.
 
-This plugin is developed by Hanif Zekri Astaneh and is provided by DigiDargah.com. It is compatible with WooCommerce version 6.1 and later.
-
-**Features**:
-- Accept payments in multiple cryptocurrencies.
-- Seamless integration with your WooCommerce store.
-- Customizable success and failure messages.
-- Automatic order status updates.
+- **Plugin Name:** DigiDargah Crypto Payment Gateway for Woocommerce
+- **Version:** 1.1
+- **Author:** DigiDargah.com
+- **Author URI:** [https://digidargah.com](https://digidargah.com)
+- **Author Email:** info@digidargah.com
+- **Text Domain:** DigiDargah_woo_payment_module
+- **WC tested up to:** 8.8
+- **Copyright (C):** 2020 DigiDargah
+- **License:** [GPLv3 or later](http://www.gnu.org/licenses/gpl-3.0.html)
 
 ---
 
