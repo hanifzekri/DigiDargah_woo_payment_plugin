@@ -84,7 +84,7 @@ After submitting your website on DigiDargah.com and getting an API key, to insta
 
 ## Contributing
 
-If you want to contribute to this project or report issues, please visit the GitHub repository: [DigiDargah Crypto Payment Gateway for WHMCS](https://github.com/hanifzekri/DigiDargah_whmcs_payment_module).
+If you want to contribute to this project or report issues, please visit the GitHub repository: [DigiDargah Crypto Payment Gateway for WooCommerce](https://github.com/hanifzekri/DigiDargah_woo_payment_module).
 
 ---
 
