@@ -20,15 +20,15 @@ function wc_gateway_digidargah_init(){
 
     if (class_exists('WC_Payment_Gateway')) {
         
-	add_filter('woocommerce_payment_gateways', 'wc_add_digidargah_gateway');
+		add_filter('woocommerce_payment_gateways', 'wc_add_digidargah_gateway');
 		
-	//Registers class WC_DigiDargah as a payment method
+		//Registers class WC_DigiDargah as a payment method
         function wc_add_digidargah_gateway($methods){
             $methods[] = 'WC_DigiDargah';
             return $methods;
         }
 		
-	//start main class
+		//start main class
         class WC_DigiDargah extends WC_Payment_Gateway {
 
             protected $api_key;
@@ -41,7 +41,7 @@ function wc_gateway_digidargah_init(){
 
             public function __construct() {
                 
-		$this->id = 'WC_DigiDargah';
+				$this->id = 'WC_DigiDargah';
                 $this->method_title = __('DigiDargah', 'woo-digidargah-gateway');
                 $this->method_description = __('انتقال مشتریان به دیجی درگاه برای پرداخت هزینه سفارش از طریق رمز ارزها ', 'woo-digidargah-gateway');
                 $this->has_fields = FALSE;
@@ -156,7 +156,7 @@ function wc_gateway_digidargah_init(){
                 ));
             }
 
-            //Process payment and return the result
+            //Process payment
             //see process_order_payment() in the Woocommerce APIs
             //return array
             public function process_payment($order_id){
@@ -167,7 +167,7 @@ function wc_gateway_digidargah_init(){
             //Add DigiDargah Checkout items to receipt page
             public function digidargah_checkout_receipt_page($order_id) {
                 
-		global $woocommerce;
+				global $woocommerce;
 
                 $order = new WC_Order($order_id);
                 $currency = $order->get_currency();
@@ -181,44 +181,43 @@ function wc_gateway_digidargah_init(){
                 $amount = $order->get_total();
                 $callback = add_query_arg('wc_order', $order_id, WC()->api_request_url('wc_digidargah'));
 
-                $data = array(
-		'api_key' => $api_key,
-		'amount_value' => $amount,
-		'amount_currency' => $currency,
-                'pay_currency' => $pay_currency,
-                'order_id' => $order_id,
-                'respond_type' => 'link',
-                'callback' => $callback,
+                $params = array(
+					'api_key' => $api_key,
+					'amount_value' => $amount,
+					'amount_currency' => $currency,
+                    'pay_currency' => $pay_currency,
+                    'order_id' => $order_id,
+                    'respond_type' => 'link',
+                    'callback' => $callback,
                 );
 
-                $response = $this->call_gateway_endpoint($this->payment_endpoint, $data);
+                $result = $this->call_gateway_endpoint($this->payment_endpoint, $params);
                 
-                if ($response->status != 'success') {
-                    $note = '';
-		    $note .= sprintf(__('پرداخت با خطا مواجه شد. <br> پاسخ درگاه پرداخت : %s', 'woo-digidargah-gateway'), $response->respond);
-		    $order->add_order_note($note);
+                if ($result->status != 'success') {
+					$note = sprintf(__('پرداخت با خطا مواجه شد. <br> پاسخ درگاه پرداخت : %s', 'woo-digidargah-gateway'), $result->respond);
+					$order->add_order_note($note);
                     wc_add_notice($note, 'error');
                     wp_redirect($woocommerce->cart->get_checkout_url());
                     exit;
                 }
 
                 //Save ID of this request
-                update_post_meta($order_id, 'digidargah_request_id', $response->request_id);
+                update_post_meta($order_id, 'digidargah_request_id', $result->request_id);
 
                 //Set remote status of the request to 1 as it's primary value.
                 update_post_meta($order_id, 'digidargah_request_status', 1);
 
-                $note = sprintf(__('کد رهگیری درگاه : %s', 'woo-digidargah-gateway'), $response->request_id);
+                $note = sprintf(__('کد رهگیری درگاه : %s', 'woo-digidargah-gateway'), $result->request_id);
                 $order->add_order_note($note);
-                wp_redirect($response->respond);
+                wp_redirect($result->respond);
                 exit;
             }
 
             //Handles the return from processing the payment
             public function digidargah_checkout_return_handler(){
                 
-		global $woocommerce;
-		$order_id = sanitize_text_field($_GET['wc_order']);
+				global $woocommerce;
+				$order_id = sanitize_text_field($_GET['wc_order']);
                 $order = wc_get_order($order_id);
 
                 if (empty($order)) {
@@ -243,31 +242,32 @@ function wc_gateway_digidargah_init(){
                 $pay_currency = $this->pay_currency;
                 $request_id = get_post_meta($order_id, 'digidargah_request_id', TRUE);
 
-                $data = array(
-		'api_key' => $api_key,
-                'order_id' => $order_id,
-                'request_id' => $request_id,
+                $params = array(
+					'api_key' => $api_key,
+                    'order_id' => $order_id,
+                    'request_id' => $request_id,
                 );
 
-                $response = $this->call_gateway_endpoint($this->verify_endpoint, $data);
-		
-		if ($response->status != 'success') {
-			$note = '';
-			$note .= sprintf(__('پرداخت با خطا مواجه شد. <br> پاسخ درگاه پرداخت : %s', 'woo-digidargah-gateway'), $response->respond);
-                    	$order->add_order_note($note);
-                    	$order->update_status('failed');
-			wc_add_notice($note, 'error');
-                    	wp_redirect($woocommerce->cart->get_checkout_url());
-                    	exit;
+                $result = $this->call_gateway_endpoint($this->verify_endpoint, $params);
+				
+				if ($result->status != 'success') {
+                    
+					$note = '';
+					$note .= sprintf(__('پرداخت با خطا مواجه شد. <br> پاسخ درگاه پرداخت : %s', 'woo-digidargah-gateway'), $result->respond);
+                    $order->add_order_note($note);
+                    $order->update_status('failed');
+					wc_add_notice($note, 'error');
+                    wp_redirect($woocommerce->cart->get_checkout_url());
+                    exit;
 					
                 } else {
 					
-			$verify_status = !empty($this->valid_order_statuses()[$this->order_status]) ? $this->order_status : 'completed';
+					$verify_status = !empty($this->valid_order_statuses()[$this->order_status]) ? $this->order_status : 'completed';
 					
-                    $verify_request_id = $response->request_id;
-                    $verify_order_id = $response->order_id;
-                    $verify_amount = $response->amount_value;
-                    $verify_currency = $response->amount_currency;
+                    $verify_request_id = $result->request_id;
+                    $verify_order_id = $result->order_id;
+                    $verify_amount = $result->amount_value;
+                    $verify_currency = $result->amount_currency;
 
                     // Completed
                     $note = sprintf(__('وضعیت پرداخت : %s', 'woo-digidargah-gateway'), $verify_status);
@@ -275,7 +275,7 @@ function wc_gateway_digidargah_init(){
                     $note .= sprintf(__('کد رهگیری پرداخت : %s', 'woo-digidargah-gateway'), $verify_request_id);
                     $order->add_order_note($note);
 
-                    // Updates order's meta data after verifying the payment.
+                    // Updates order's meta after verifying the payment.
                     update_post_meta($order_id, 'digidargah_request_status', $verify_status);
                     update_post_meta($order_id, 'digidargah_request_id', $verify_request_id);
                     update_post_meta($order_id, 'digidargah_order_id', $verify_order_id);
@@ -323,11 +323,15 @@ function wc_gateway_digidargah_init(){
             }
 
             //Calls the gateway endpoints
-            private function call_gateway_endpoint($url, $args){
-				$options = array( 'http' => array('method' => 'POST', 'header' => 'Content-Type: application/x-www-form-urlencoded', 'timeout' => 10, 'content' => http_build_query($args)), 'ssl' => array('verify_peer' => false, 'verify_peer_name' => false));
-				$response = file_get_contents($url, false, stream_context_create($options));
-				$response = json_decode($response);
-                return $response;
+            private function call_gateway_endpoint($url, $params){
+				$ch = curl_init($url);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				$response = curl_exec($ch);
+				curl_close($ch);
+				$result = json_decode($response);
+                return $result;
             }
 
             //Shows a failure message for the unsuccessful payments
