@@ -1,11 +1,11 @@
 <?php
 
 /*
-* Plugin Name: DigiDargah crypto payment gateway for Woocommerce
-* Description: <a href="https://digidargah.com">DigiDargah</a> crypto payment gateway for Woocommerce.
+* Plugin Name: افزونه دیجی درگاه برای ووکامرس
+* Description: افزونه درگاه پرداخت رمز ارزی <a href="https://digidargah.com"> دیجی درگاه </a> برای ووکامرس.
 * Version: 1.1
 * developer: Hanif Zekri Astaneh
-* Author: DigiDargah.com
+* Author: دیجی درگاه
 * Author URI: https://digidargah.com
 * Author Email: info@digidargah.com
 * Text Domain: DigiDargah_woo_payment_plugin
