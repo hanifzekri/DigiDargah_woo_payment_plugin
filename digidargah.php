@@ -119,13 +119,13 @@ function wc_gateway_digidargah_init(){
                     'api_key' => array(
                         'title' => __('کلید API', 'woo-digidargah-gateway'),
                         'type' => 'text',
-                        'description' => __('برای ایجاد کلید API لطفا به آدرس رو به رو مراجعه نمایید. <a href="https://digidargah.com/cryptosite" target="_blank">https://digidargah.com/cryptosite</a>', 'woo-digidargah-gateway'),
+                        'description' => __('برای ایجاد کلید API لطفا به آدرس رو به رو مراجعه نمایید. <a href="https://digidargah.com/gateway" target="_blank">https://digidargah.com/gateway</a>', 'woo-digidargah-gateway'),
                         'default' => '',
                     ),
                     'pay_currency' => array(
                         'title' => __('ارزهای قابل انتخاب', 'woo-digidargah-gateway'),
                         'type' => 'text',
-                        'description' => __('به صورت پیش فرض کاربر امکان پرداخت از طریق تمامی <a href="https://digidargah.com/cryptosite" target="_blank"> ارزهای فعال </a> در درگاه را دارد اما در صورتی که تمایل دارید مشتری را محدود به پرداخت از طریق یک یا چند ارز خاص کنید، می توانید از طریق این متغییر نام ارز و یا ارزها را اعلام نمایید. در صورت تمایل به اعلام بیش از یک ارز، آنها را توسط خط تیره ( dash ) از هم جدا کنید.', 'woo-digidargah-gateway'),
+                        'description' => __('به صورت پیش فرض کاربر امکان پرداخت از طریق تمامی <a href="https://digidargah.com/gateway" target="_blank"> ارزهای فعال </a> در درگاه را دارد اما در صورتی که تمایل دارید مشتری را محدود به پرداخت از طریق یک یا چند ارز خاص کنید، می توانید از طریق این متغییر نام ارز و یا ارزها را اعلام نمایید. در صورت تمایل به اعلام بیش از یک ارز، آنها را توسط خط تیره ( dash ) از هم جدا کنید.', 'woo-digidargah-gateway'),
                         'default' => '',
                     ),
                     'order_status' => array(
