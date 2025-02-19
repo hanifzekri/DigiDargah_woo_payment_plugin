@@ -5,11 +5,11 @@
 * Description: افزونه درگاه پرداخت رمز ارزی <a href="https://digidargah.com"> دیجی درگاه </a> برای ووکامرس.
 * Version: 1.1
 * developer: Hanif Zekri Astaneh
-* Author: دیجی درگاه
+* Author: DigiDargah.com
 * Author URI: https://digidargah.com
 * Author Email: info@digidargah.com
 * Text Domain: DigiDargah_woo_payment_plugin
-* WC tested up to: 6.1
+* Tested version up to: 6.1
 * copyright (C) 2020 DigiDargah
 * license http://www.gnu.org/licenses/gpl-3.0.html GPLv3 or later
 */
@@ -324,12 +324,18 @@ function wc_gateway_digidargah_init(){
 
             //Calls the gateway endpoints
             private function call_gateway_endpoint($url, $params){
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				$response = curl_exec($ch);
-				curl_close($ch);
+				$curl = curl_init();
+				curl_setopt_array($curl, [
+					CURLOPT_URL => $url,
+					CURLOPT_RETURNTRANSFER => true,
+					CURLOPT_MAXREDIRS => 5,
+					CURLOPT_TIMEOUT => 60,
+					CURLOPT_USERAGENT => $_SERVER["HTTP_USER_AGENT"],
+					CURLOPT_CUSTOMREQUEST => "POST",
+					CURLOPT_POSTFIELDS => json_encode($params),
+				]);
+				$response = curl_exec($curl);
+				curl_close($curl);
 				$result = json_decode($response);
                 return $result;
             }
